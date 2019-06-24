@@ -1,5 +1,7 @@
 package simplex;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,15 +24,20 @@ import scpsolver.problems.LinearProgram;
 
 public class SimplexMain {
 
+	private static String report;
+	
 	public static void main( String[] args ) {
 		
 		try {
 			
-			//Integer size = Integer.parseInt( args[0] );
-			Integer size = 10;
+			Integer size = Integer.parseInt( args[0] );
+			long startTime = System.nanoTime();
+			long beforeUsedMem = Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+
+			report = "Iniciando o processo da otimização do problema das rainhas em um tabuleiro de xadrez " + size + "x" + size + "\n\n"; 
 			
 			/**
-			 * Object to map the M[í][j] point in a unidimensional matrix
+			 * Object to map the M[í][j] point in a one-dimensional matrix
 			 */
 			Map< String, Integer > mapPosition = new HashMap< String, Integer >();
 			fill( mapPosition, size );
@@ -46,6 +53,19 @@ public class SimplexMain {
 			
 			optimizeBool( tableau, size );
 			
+			long endTime = System.nanoTime();
+			long afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+
+			report = report.concat( "Tempo de execução: " + ( ( endTime - startTime ) / 1000000 ) + " milisegundos. \n" );
+			report = report.concat( "Aproximação de quantidade de memória gasta: " + ( beforeUsedMem - afterUsedMem ) + " bytes. \n" );
+			
+			FileWriter writer = new FileWriter( "report/MODEL_" + size + "x" + size +"_" + System.currentTimeMillis() + ".txt" );
+		    BufferedWriter bw = new BufferedWriter( writer );
+
+		    bw.write( report );
+		    
+		    bw.close();
+
 		} catch( Exception ex ) {
 			ex.printStackTrace();
 		}
@@ -57,7 +77,7 @@ public class SimplexMain {
 		Integer pos = 0;
 		for( int i = 1 ; i <= size ; i++ ) {
 			for( int j = 1 ; j <= size ; j++ ) {
-				String variable = "x" + i + "" + j;
+				String variable = "x" + i + "," + j;
 				mapPosition.put( variable, pos );
 				pos++;
 			}
@@ -65,6 +85,13 @@ public class SimplexMain {
 		
 	}
 	
+	/**
+	 * 
+	 * Optimize the current tableau with boolean variables
+	 * 
+	 * @param tableau
+	 * @param size
+	 */
 	public static void optimizeBool( Tableau tableau, Integer size ) {
 		
 		try {
@@ -85,9 +112,15 @@ public class SimplexMain {
 			LinearProgramSolver solver  = SolverFactory.newDefault(); 
 			double[] sol = solver.solve( lp );
 			
+			Long optimum = 0L;
 			for( int i = 0 ; i < sol.length ; i++ ) {
-				System.out.println( ( i + 1 ) + " - " + sol[i] );
+				if( sol[i] == 1.0 ) {
+					optimum++;
+					report = report.concat( "Posição " + ( i + 1 ) + " - " + sol[i] + "\n" );
+				}
 			}
+			
+			report = report.concat( "Solução ótima: " + optimum + " rainhas posicionadas no tabuleiro. \n" );
 			
 		} catch( Exception ex ) {
 			ex.printStackTrace();
@@ -96,6 +129,11 @@ public class SimplexMain {
 		
 	}
 	
+	/**
+	 * Not usable yet
+	 * @param tableau
+	 * @param size
+	 */
 	public static void optimizeReal( Tableau tableau, Integer size ) {
 		
 		try {
@@ -138,7 +176,7 @@ public class SimplexMain {
 		int currZ = 0;
 		for( int i = 1 ; i <= size ; i++ ) {
 			for( int j = 1 ; j <= size ; j++ ) {
-				String variable = "x" + i + "" + j;
+				String variable = "x" + i + "," + j;
 				zFunction = zFunction.concat( variable );
 				zFunction = zFunction.concat( " + " );
 				zCoefs[currZ++] = 1;
@@ -146,27 +184,26 @@ public class SimplexMain {
 		}
 		tableau.setZFunction( zCoefs );
 		
-		System.out.print( "max z = " + zFunction.substring(0, zFunction.length() - 2) );
-
-		System.out.println( "" );
-		System.out.println( "s.a" );
+		report = report.concat("max z = " + zFunction.substring(0, zFunction.length() - 2) + "\n" );
+		report = report.concat( "\n" );
+		report = report.concat( "s.a: \n" );
 		
 		/**
 		 * Line restriction
 		 */
 		for( int i = 1 ; i <= size ; i++ ) {
 			double[] restriction = new double[(size * size)];
-			System.out.println( "" );
+			report = report.concat( "\n" );
 			for( int j = 1 ; j <= size ; j++ ) {
-				String variable = "x" + i + "" + j;
-				System.out.print( variable );
+				String variable = "x" + i + "," + j;
+				report = report.concat( variable );
 				if( j < size ) {
-					System.out.print( " + " );
+					report = report.concat( " + " );
 				}
 				restriction[ mapPosition.get( variable ) ] = 1;
 			}
 			tableau.addRestriction( restriction );
-			System.out.print( " <= 1" );
+			report = report.concat( " <= 1 \n" );
 		}
 		
 		/**
@@ -174,41 +211,41 @@ public class SimplexMain {
 		 */
 		for( int i = 1 ; i <= size ; i++ ) {
 			double[] restriction = new double[(size * size)];
-			System.out.println( "" );
+			report = report.concat( "\n" );
 			for( int j = 1 ; j <= size ; j++ ) {
-				String variable = "x" + j + "" + i;
-				System.out.print( variable );
+				String variable = "x" + j + "," + i;
+				report = report.concat( variable );
 				if( j < size ) {
-					System.out.print( " + " );
+					report = report.concat( " + " );
 				}
 				restriction[ mapPosition.get( variable ) ] = 1;
 			}
 			tableau.addRestriction( restriction );
-			System.out.print( " <= 1" );
+			report = report.concat( " <= 1 \n" );
 		}
 		
 		/**
 		 * Diagonal restriction
 		 */
 		for( List< String > list : diagonals ) {
-			System.out.println( "" );
+			report = report.concat( "\n" );
 			double[] restriction = new double[(size * size)];
 			for( int i = 0 ; i < list.size() ; i++ ) {
-				System.out.print( "x" + list.get( i ) );
+				report = report.concat( "x" + list.get( i ) );
 				if( i < list.size() - 1 ) {
-					System.out.print( " + " );
+					report = report.concat( " + " );
 				}
 				restriction[ mapPosition.get( "x" + list.get( i ) ) ] = 1;
 			}
 			tableau.addRestriction( restriction );
-			System.out.print( " <= 1 " );
+			report = report.concat( " <= 1 \n" );
 		}
 		
 		/**
 		 * Positive restriction
 		 */
-		System.out.println( "" );
-		System.out.println( "xij, 1 <= i <= " + size + ", 1 <= j <= " + size + " E { 0, 1 }");
+		report = report.concat( " \n" );
+		report = report.concat( "xi,j, 1 <= i <= " + size + ", 1 <= j <= " + size + " E { 0, 1 } \n\n");
 	
 		return tableau;
 		
@@ -231,7 +268,7 @@ public class SimplexMain {
 			Integer tmpColumn = size;
 			List< String > currentDiagonal = new ArrayList< String >();
 			while( tmpLine <= size && tmpColumn <= size ) {
-				currentDiagonal.add( tmpLine + "" + tmpColumn );
+				currentDiagonal.add( tmpLine + "," + tmpColumn );
 				tmpLine++;
 				tmpColumn--;
 			}
@@ -248,7 +285,7 @@ public class SimplexMain {
 			Integer tmpColumn = i;
 			List< String > currentDiagonal = new ArrayList< String >();
 			while( tmpLine <= size && tmpColumn >= 1 ) {
-				currentDiagonal.add( tmpLine + "" + tmpColumn );
+				currentDiagonal.add( tmpLine + "," + tmpColumn );
 				tmpLine++;
 				tmpColumn--;
 			}
@@ -276,7 +313,7 @@ public class SimplexMain {
 			Integer tmpColumn = 1;
 			List< String > currentDiagonal = new ArrayList< String >();
 			while( tmpLine <= size && tmpLine <= size ) {
-				currentDiagonal.add( tmpLine + "" + tmpColumn );
+				currentDiagonal.add( tmpLine + "," + tmpColumn );
 				tmpLine++;
 				tmpColumn++;
 			}
@@ -293,7 +330,7 @@ public class SimplexMain {
 			Integer tmpColumn = i;
 			List< String > currentDiagonal = new ArrayList< String >();
 			while( tmpLine <= size && tmpColumn <= size ) {
-				currentDiagonal.add( tmpLine + "" + tmpColumn );
+				currentDiagonal.add( tmpLine + "," + tmpColumn );
 				tmpLine++;
 				tmpColumn++;
 			}
