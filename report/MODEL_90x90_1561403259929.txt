@@ -1165,5 +1165,5 @@ Posição 7845 - 1.0
 Posição 7975 - 1.0
 Posição 8067 - 1.0
 Solução ótima: 90 rainhas posicionadas no tabuleiro. 
-Tempo de execução: 41111 milisegundos. 
-Aproximação de quantidade de memória gasta: -61747576 bytes. 
+Tempo de execução: 39547 milisegundos. 
+Aproximação de quantidade de memória gasta: -256061544 bytes. 

@@ -120,6 +120,8 @@ public class SimplexMain {
 				}
 			}
 			
+			System.out.println( "OPTIMUM   " + optimum );
+			
 			report = report.concat( "Solução ótima: " + optimum + " rainhas posicionadas no tabuleiro. \n" );
 			
 		} catch( Exception ex ) {
