@@ -1,0 +1,196 @@
+Iniciando o processo da otimização do problema das rainhas em um tabuleiro de xadrez 90x90
+
+Ótimo encontrado para iteração de número 0: 85
+Ótimo encontrado para iteração de número 1: 85
+Ótimo encontrado para iteração de número 2: 86
+Ótimo encontrado para iteração de número 3: 84
+Ótimo encontrado para iteração de número 4: 85
+Ótimo encontrado para iteração de número 5: 85
+Ótimo encontrado para iteração de número 6: 85
+Ótimo encontrado para iteração de número 7: 85
+Ótimo encontrado para iteração de número 8: 85
+Ótimo encontrado para iteração de número 9: 83
+Ótimo encontrado para iteração de número 10: 83
+Ótimo encontrado para iteração de número 11: 86
+Ótimo encontrado para iteração de número 12: 85
+Ótimo encontrado para iteração de número 13: 83
+Ótimo encontrado para iteração de número 14: 85
+Ótimo encontrado para iteração de número 15: 84
+Ótimo encontrado para iteração de número 16: 86
+Ótimo encontrado para iteração de número 17: 85
+Ótimo encontrado para iteração de número 18: 86
+Ótimo encontrado para iteração de número 19: 85
+Ótimo encontrado para iteração de número 20: 84
+Ótimo encontrado para iteração de número 21: 85
+Ótimo encontrado para iteração de número 22: 86
+Ótimo encontrado para iteração de número 23: 86
+Ótimo encontrado para iteração de número 24: 85
+Ótimo encontrado para iteração de número 25: 82
+Ótimo encontrado para iteração de número 26: 86
+Ótimo encontrado para iteração de número 27: 84
+Ótimo encontrado para iteração de número 28: 85
+Ótimo encontrado para iteração de número 29: 84
+Ótimo encontrado para iteração de número 30: 87
+Ótimo encontrado para iteração de número 31: 83
+Ótimo encontrado para iteração de número 32: 83
+Ótimo encontrado para iteração de número 33: 86
+Ótimo encontrado para iteração de número 34: 85
+Ótimo encontrado para iteração de número 35: 86
+Ótimo encontrado para iteração de número 36: 85
+Ótimo encontrado para iteração de número 37: 84
+Ótimo encontrado para iteração de número 38: 86
+Ótimo encontrado para iteração de número 39: 85
+Ótimo encontrado para iteração de número 40: 85
+Ótimo encontrado para iteração de número 41: 86
+Ótimo encontrado para iteração de número 42: 87
+Ótimo encontrado para iteração de número 43: 87
+Ótimo encontrado para iteração de número 44: 85
+Ótimo encontrado para iteração de número 45: 85
+Ótimo encontrado para iteração de número 46: 84
+Ótimo encontrado para iteração de número 47: 85
+Ótimo encontrado para iteração de número 48: 83
+Ótimo encontrado para iteração de número 49: 84
+Ótimo encontrado para iteração de número 50: 83
+Ótimo encontrado para iteração de número 51: 86
+Ótimo encontrado para iteração de número 52: 83
+Ótimo encontrado para iteração de número 53: 83
+Ótimo encontrado para iteração de número 54: 85
+Ótimo encontrado para iteração de número 55: 85
+Ótimo encontrado para iteração de número 56: 86
+Ótimo encontrado para iteração de número 57: 85
+Ótimo encontrado para iteração de número 58: 83
+Ótimo encontrado para iteração de número 59: 84
+Ótimo encontrado para iteração de número 60: 85
+Ótimo encontrado para iteração de número 61: 84
+Ótimo encontrado para iteração de número 62: 86
+Ótimo encontrado para iteração de número 63: 84
+Ótimo encontrado para iteração de número 64: 84
+Ótimo encontrado para iteração de número 65: 85
+Ótimo encontrado para iteração de número 66: 83
+Ótimo encontrado para iteração de número 67: 85
+Ótimo encontrado para iteração de número 68: 85
+Ótimo encontrado para iteração de número 69: 84
+Ótimo encontrado para iteração de número 70: 83
+Ótimo encontrado para iteração de número 71: 86
+Ótimo encontrado para iteração de número 72: 85
+Ótimo encontrado para iteração de número 73: 85
+Ótimo encontrado para iteração de número 74: 85
+Ótimo encontrado para iteração de número 75: 84
+Ótimo encontrado para iteração de número 76: 84
+Ótimo encontrado para iteração de número 77: 85
+Ótimo encontrado para iteração de número 78: 84
+Ótimo encontrado para iteração de número 79: 86
+Ótimo encontrado para iteração de número 80: 83
+Ótimo encontrado para iteração de número 81: 84
+Ótimo encontrado para iteração de número 82: 84
+Ótimo encontrado para iteração de número 83: 86
+Ótimo encontrado para iteração de número 84: 84
+Ótimo encontrado para iteração de número 85: 86
+Ótimo encontrado para iteração de número 86: 84
+Ótimo encontrado para iteração de número 87: 84
+Ótimo encontrado para iteração de número 88: 83
+Ótimo encontrado para iteração de número 89: 84
+Ótimo encontrado para iteração de número 90: 84
+Ótimo encontrado para iteração de número 91: 83
+Ótimo encontrado para iteração de número 92: 84
+Ótimo encontrado para iteração de número 93: 84
+Ótimo encontrado para iteração de número 94: 86
+Ótimo encontrado para iteração de número 95: 88
+Ótimo encontrado para iteração de número 96: 84
+Ótimo encontrado para iteração de número 97: 86
+Ótimo encontrado para iteração de número 98: 84
+Ótimo encontrado para iteração de número 99: 84
+
+Ótimo após 100 interações: 88
+
+Solução:
+Ponto:89,86
+Ponto:85,35
+Ponto:33,65
+Ponto:13,74
+Ponto:77,11
+Ponto:4,41
+Ponto:74,80
+Ponto:83,20
+Ponto:52,53
+Ponto:16,39
+Ponto:71,60
+Ponto:32,82
+Ponto:62,45
+Ponto:63,56
+Ponto:22,55
+Ponto:45,33
+Ponto:44,15
+Ponto:59,5
+Ponto:50,49
+Ponto:1,8
+Ponto:31,9
+Ponto:7,42
+Ponto:48,17
+Ponto:68,58
+Ponto:67,23
+Ponto:21,40
+Ponto:27,54
+Ponto:80,2
+Ponto:15,61
+Ponto:12,22
+Ponto:42,50
+Ponto:24,77
+Ponto:70,68
+Ponto:9,51
+Ponto:66,19
+Ponto:78,64
+Ponto:40,4
+Ponto:46,21
+Ponto:90,31
+Ponto:86,70
+Ponto:25,28
+Ponto:60,69
+Ponto:30,6
+Ponto:3,34
+Ponto:72,12
+Ponto:10,14
+Ponto:73,85
+Ponto:26,83
+Ponto:76,36
+Ponto:47,32
+Ponto:41,13
+Ponto:56,48
+Ponto:58,88
+Ponto:88,90
+Ponto:19,44
+Ponto:75,27
+Ponto:87,30
+Ponto:29,43
+Ponto:65,24
+Ponto:81,29
+Ponto:55,73
+Ponto:20,1
+Ponto:14,38
+Ponto:23,18
+Ponto:43,37
+Ponto:34,16
+Ponto:8,63
+Ponto:61,76
+Ponto:82,78
+Ponto:49,66
+Ponto:36,72
+Ponto:64,84
+Ponto:38,87
+Ponto:35,3
+Ponto:18,52
+Ponto:2,71
+Ponto:6,62
+Ponto:57,79
+Ponto:17,57
+Ponto:37,10
+Ponto:11,75
+Ponto:28,7
+Ponto:53,81
+Ponto:5,89
+Ponto:54,59
+Ponto:51,67
+Ponto:84,46
+Ponto:69,26
+Tempo de execução: 136032 milisegundos. 
+Aproximação de quantidade de memória gasta: -17905840 bytes. 
